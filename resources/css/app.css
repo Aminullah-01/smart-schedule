@@ -1,0 +1,57 @@
+@import url('https://fonts.bunny.net/css?family=space-grotesk:400,500,600,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--app-bg: #f3f6fb;
+		--app-surface: #ffffff;
+		--app-border: #d9e3f0;
+		--app-ink: #13233f;
+		--app-muted: #5e6f8f;
+		--app-accent: #127f6e;
+		--app-accent-soft: #dcf6f1;
+	}
+
+	body {
+		font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+		color: var(--app-ink);
+		background: radial-gradient(circle at 18% -12%, #e3f8f2 0%, transparent 42%),
+			radial-gradient(circle at 92% 0%, #dbe8ff 0%, transparent 33%),
+			var(--app-bg);
+		min-height: 100vh;
+	}
+}
+
+@layer components {
+	.app-shell {
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(243, 246, 251, 0.95));
+	}
+
+	.card-lift {
+		@apply rounded-2xl border border-slate-200/80 bg-white/95 shadow-sm transition duration-300;
+	}
+
+	.card-lift:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 16px 40px rgba(19, 35, 63, 0.08);
+	}
+
+	.fade-up {
+		animation: fadeUp 560ms ease-out both;
+	}
+}
+
+@keyframes fadeUp {
+	from {
+		opacity: 0;
+		transform: translateY(14px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
