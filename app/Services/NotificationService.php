@@ -41,12 +41,17 @@ class NotificationService
                 continue;
             }
 
+            if ($channel === 'browser') {
+                $savedNotifications->push($this->saveBrowserNotification($user, $event, $message));
+                $this->sendBrowserPush($user, $event, $message);
+                continue;
+            }
+
             $savedNotifications->push($this->savePendingNotification($user, $event, $channel, $message));
 
             match ($channel) {
                 'email' => $this->sendEmail($savedNotifications->last()),
                 'sms' => $this->sendSMS($savedNotifications->last()),
-                'browser' => $this->sendBrowserPush($user, $event, $message),
                 default => null,
             };
         }
@@ -113,6 +118,18 @@ class NotificationService
             'user_id' => $user->id,
             'event_id' => $event?->id,
             'channel' => 'in_app',
+            'message' => $message,
+            'status' => 'sent',
+            'sent_at' => now(),
+        ]);
+    }
+
+    public function saveBrowserNotification(User $user, ?Event $event, string $message): Notification
+    {
+        return Notification::query()->create([
+            'user_id' => $user->id,
+            'event_id' => $event?->id,
+            'channel' => 'browser',
             'message' => $message,
             'status' => 'sent',
             'sent_at' => now(),

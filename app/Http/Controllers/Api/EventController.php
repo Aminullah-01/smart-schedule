@@ -7,12 +7,16 @@ use App\Http\Requests\Event\StoreEventRequest;
 use App\Http\Requests\Event\UpdateEventRequest;
 use App\Models\Event;
 use App\Services\EventService;
+use App\Services\NotificationService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    public function __construct(private readonly EventService $eventService)
+    public function __construct(
+        private readonly EventService $eventService,
+        private readonly NotificationService $notificationService
+    )
     {
     }
 
@@ -82,6 +86,23 @@ class EventController extends Controller
 
         return response()->json([
             'message' => 'Event deleted successfully.',
+        ]);
+    }
+
+    public function sendReminderNow(Request $request, int $id): JsonResponse
+    {
+        $event = $this->findUserEvent($request, $id);
+        $user = $request->user();
+
+        $this->notificationService->send($user, $event, ['in_app', 'email', 'sms', 'browser']);
+
+        $event->forceFill([
+            'reminder_queued_at' => now(),
+            'reminder_sent_at' => now(),
+        ])->save();
+
+        return response()->json([
+            'message' => 'Reminder sent successfully.',
         ]);
     }
 

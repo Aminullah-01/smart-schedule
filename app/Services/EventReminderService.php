@@ -13,8 +13,9 @@ class EventReminderService
     public function dispatchDueReminders(): int
     {
         $now = Carbon::now();
-        $targetWindowStart = $now->copy();
-        $targetWindowEnd = $now->copy()->addHour();
+        // Match events that are about one hour away, with a one-minute tolerance for scheduler drift.
+        $targetWindowStart = $now->copy()->addMinutes(59)->startOfMinute();
+        $targetWindowEnd = $now->copy()->addHour()->endOfMinute();
         $dispatched = 0;
 
         Event::query()

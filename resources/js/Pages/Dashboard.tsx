@@ -2,7 +2,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, router } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import axios from 'axios';
-import { FormEvent, useMemo, useState } from 'react';
+import { FormEvent, useEffect, useMemo, useRef, useState } from 'react';
 
 type DashboardProps = PageProps<{
     stats: {
@@ -38,9 +38,18 @@ type DashboardProps = PageProps<{
 
 export default function Dashboard({ stats, timeline, recentNotifications }: DashboardProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isRuleModalOpen, setIsRuleModalOpen] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
     const [editingEventId, setEditingEventId] = useState<number | null>(null);
+    const notifiedBrowserIds = useRef<Set<number>>(new Set());
+    const [ruleData, setRuleData] = useState({
+        email_enabled: true,
+        sms_enabled: false,
+        browser_enabled: true,
+        in_app_enabled: true,
+    });
 
     const [formData, setFormData] = useState({
         title: '',
@@ -62,6 +71,7 @@ export default function Dashboard({ stats, timeline, recentNotifications }: Dash
     const openCreateModal = () => {
         setEditingEventId(null);
         setErrorMessage('');
+        setSuccessMessage('');
         setFormData({
             title: '',
             description: '',
@@ -79,6 +89,7 @@ export default function Dashboard({ stats, timeline, recentNotifications }: Dash
     const openEditModal = (event: DashboardProps['timeline'][number]) => {
         setEditingEventId(event.id);
         setErrorMessage('');
+        setSuccessMessage('');
         setFormData({
             title: event.title,
             description: event.description ?? '',
@@ -108,6 +119,7 @@ export default function Dashboard({ stats, timeline, recentNotifications }: Dash
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
         setErrorMessage('');
+        setSuccessMessage('');
         setIsSaving(true);
 
         const payload = {
@@ -124,6 +136,7 @@ export default function Dashboard({ stats, timeline, recentNotifications }: Dash
             }
 
             setIsModalOpen(false);
+            setSuccessMessage(editingEventId === null ? 'Event created successfully.' : 'Event updated successfully.');
             refreshDashboard();
         } catch (error: any) {
             setErrorMessage(
@@ -144,6 +157,7 @@ export default function Dashboard({ stats, timeline, recentNotifications }: Dash
 
         try {
             await axios.delete(`/api/events/${eventId}`);
+            setSuccessMessage('Event deleted successfully.');
             refreshDashboard();
         } catch (error: any) {
             setErrorMessage(
@@ -152,11 +166,110 @@ export default function Dashboard({ stats, timeline, recentNotifications }: Dash
         }
     };
 
+    const handleSendReminderNow = async (eventId: number) => {
+        setErrorMessage('');
+        setSuccessMessage('');
+
+        try {
+            await axios.post(`/api/events/${eventId}/send-reminder`);
+            setSuccessMessage('Reminder sent successfully.');
+            refreshDashboard();
+        } catch (error: any) {
+            setErrorMessage(
+                error?.response?.data?.message ?? 'Unable to send reminder right now.',
+            );
+        }
+    };
+
+    const openRuleModal = async () => {
+        setErrorMessage('');
+        setSuccessMessage('');
+
+        try {
+            const response = await axios.get('/api/notification-preferences');
+            setRuleData({
+                email_enabled: Boolean(response.data?.data?.email_enabled),
+                sms_enabled: Boolean(response.data?.data?.sms_enabled),
+                browser_enabled: Boolean(response.data?.data?.browser_enabled),
+                in_app_enabled: Boolean(response.data?.data?.in_app_enabled),
+            });
+            setIsRuleModalOpen(true);
+        } catch (error: any) {
+            setErrorMessage(error?.response?.data?.message ?? 'Unable to load reminder rule settings.');
+        }
+    };
+
+    const saveRuleSettings = async () => {
+        setErrorMessage('');
+        setSuccessMessage('');
+
+        try {
+            await axios.put('/api/notification-preferences', ruleData);
+            setSuccessMessage('Reminder rule saved successfully.');
+            setIsRuleModalOpen(false);
+            refreshDashboard();
+        } catch (error: any) {
+            setErrorMessage(error?.response?.data?.message ?? 'Unable to save reminder rule settings.');
+        }
+    };
+
     const today = new Intl.DateTimeFormat('en-US', {
         weekday: 'long',
         month: 'short',
         day: 'numeric',
     }).format(new Date());
+
+    useEffect(() => {
+        if (typeof window === 'undefined' || !('Notification' in window)) {
+            return;
+        }
+
+        if (Notification.permission === 'default') {
+            void Notification.requestPermission();
+        }
+
+        const fetchBrowserNotifications = async () => {
+            if (Notification.permission !== 'granted') {
+                return;
+            }
+
+            try {
+                const response = await axios.get('/api/notifications?limit=30');
+                const notifications = Array.isArray(response.data?.data)
+                    ? response.data.data
+                    : [];
+
+                notifications
+                    .filter((item: any) => item.channel === 'browser' && item.status === 'sent')
+                    .forEach((item: any) => {
+                        const id = Number(item.id);
+
+                        if (Number.isNaN(id) || notifiedBrowserIds.current.has(id)) {
+                            return;
+                        }
+
+                        notifiedBrowserIds.current.add(id);
+
+                        const title = item.event_id
+                            ? 'Event Reminder'
+                            : 'Scheduler Notification';
+
+                        new Notification(title, {
+                            body: item.message,
+                        });
+                    });
+            } catch {
+                // Non-blocking: browser notifications should not break dashboard rendering.
+            }
+        };
+
+        void fetchBrowserNotifications();
+        const interval = window.setInterval(fetchBrowserNotifications, 30000);
+
+        return () => {
+            window.clearInterval(interval);
+        };
+    }, []);
 
     return (
         <AuthenticatedLayout
@@ -192,6 +305,12 @@ export default function Dashboard({ stats, timeline, recentNotifications }: Dash
 
             <div className="py-8">
                 <div className="mx-auto max-w-7xl space-y-6 px-4 sm:px-6 lg:px-8">
+                    {successMessage && (
+                        <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+                            {successMessage}
+                        </div>
+                    )}
+
                     {errorMessage && (
                         <div className="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
                             {errorMessage}
@@ -266,6 +385,12 @@ export default function Dashboard({ stats, timeline, recentNotifications }: Dash
                                                 Edit
                                             </button>
                                             <button
+                                                onClick={() => handleSendReminderNow(item.id)}
+                                                className="rounded-md border border-teal-200 px-2 py-1 text-xs font-medium text-teal-700 transition hover:bg-teal-50"
+                                            >
+                                                Send Reminder
+                                            </button>
+                                            <button
                                                 onClick={() => handleDelete(item.id)}
                                                 className="rounded-md border border-rose-200 px-2 py-1 text-xs font-medium text-rose-700 transition hover:bg-rose-50"
                                             >
@@ -292,7 +417,10 @@ export default function Dashboard({ stats, timeline, recentNotifications }: Dash
                                 >
                                     Update Profile
                                 </a>
-                                <button className="w-full rounded-xl bg-teal-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-teal-700">
+                                <button
+                                    onClick={openRuleModal}
+                                    className="w-full rounded-xl bg-teal-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-teal-700"
+                                >
                                     Create Reminder Rule
                                 </button>
                             </div>
@@ -355,6 +483,67 @@ export default function Dashboard({ stats, timeline, recentNotifications }: Dash
                     </section>
                 </div>
             </div>
+
+            {isRuleModalOpen && (
+                <div className="fixed inset-0 z-40 flex items-center justify-center bg-slate-900/50 px-4 py-8">
+                    <div className="w-full max-w-lg rounded-2xl border border-slate-200 bg-white p-6 shadow-xl">
+                        <div className="mb-4 flex items-center justify-between">
+                            <h3 className="text-xl font-semibold text-slate-900">Reminder Rule</h3>
+                            <button
+                                type="button"
+                                onClick={() => setIsRuleModalOpen(false)}
+                                className="rounded-md border border-slate-300 px-2 py-1 text-sm text-slate-600"
+                            >
+                                Close
+                            </button>
+                        </div>
+
+                        <p className="mb-4 text-sm text-slate-600">
+                            Choose how users receive event reminders.
+                        </p>
+
+                        <div className="space-y-3">
+                            {[
+                                { key: 'email_enabled', label: 'Email reminders' },
+                                { key: 'sms_enabled', label: 'SMS reminders' },
+                                { key: 'browser_enabled', label: 'Browser reminders' },
+                                { key: 'in_app_enabled', label: 'In-app reminders' },
+                            ].map((item) => (
+                                <label key={item.key} className="flex items-center justify-between rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+                                    <span className="text-sm text-slate-700">{item.label}</span>
+                                    <input
+                                        type="checkbox"
+                                        checked={ruleData[item.key as keyof typeof ruleData]}
+                                        onChange={(event) =>
+                                            setRuleData((previous) => ({
+                                                ...previous,
+                                                [item.key]: event.target.checked,
+                                            }))
+                                        }
+                                    />
+                                </label>
+                            ))}
+                        </div>
+
+                        <div className="mt-5 flex justify-end gap-2">
+                            <button
+                                type="button"
+                                onClick={() => setIsRuleModalOpen(false)}
+                                className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                type="button"
+                                onClick={saveRuleSettings}
+                                className="rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white"
+                            >
+                                Save Rule
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {isModalOpen && (
                 <div className="fixed inset-0 z-40 flex items-center justify-center bg-slate-900/50 px-4 py-8">

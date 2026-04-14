@@ -30,6 +30,13 @@ return [
 
     'sms' => [
         'driver' => env('SMS_DRIVER', 'log'),
+        'termii' => [
+            'api_key' => env('TERMII_API_KEY'),
+            'sender_id' => env('TERMII_SENDER_ID', 'N-Alert'),
+            'channel' => env('TERMII_CHANNEL', 'generic'),
+            'type' => env('TERMII_TYPE', 'plain'),
+            'base_url' => env('TERMII_BASE_URL', 'https://api.ng.termii.com'),
+        ],
     ],
 
     'slack' => [
