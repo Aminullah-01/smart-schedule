@@ -50,20 +50,26 @@ class DashboardController extends Controller
                 'end_time',
                 'is_recurring',
                 'recurrence_type',
+                'reminder_time',
+                'reminder_queued_at',
+                'reminder_sent_at',
             ])
             ->map(function ($event): array {
                 return [
-                    'id' => $event->id,
-                    'title' => $event->title,
-                    'description' => $event->description,
-                    'category' => $event->category,
-                    'priority' => $event->priority,
-                    'date' => $event->date->toDateString(),
-                    'startTime' => $event->start_time->format('H:i'),
-                    'endTime' => $event->end_time->format('H:i'),
-                    'isRecurring' => $event->is_recurring,
-                    'recurrenceType' => $event->recurrence_type,
-                    'time' => $event->start_time->format('h:i A'),
+                    'id'               => $event->id,
+                    'title'            => $event->title,
+                    'description'      => $event->description,
+                    'category'         => $event->category,
+                    'priority'         => $event->priority,
+                    'date'             => $event->date->toDateString(),
+                    'startTime'        => $event->start_time->format('H:i'),
+                    'endTime'          => $event->end_time->format('H:i'),
+                    'isRecurring'      => $event->is_recurring,
+                    'recurrenceType'   => $event->recurrence_type,
+                    'time'             => $event->start_time->format('h:i A'),
+                    'reminderTime'     => $event->reminder_time?->toDateTimeString(),
+                    'reminderQueuedAt' => $event->reminder_queued_at?->toDateTimeString(),
+                    'reminderSentAt'   => $event->reminder_sent_at?->toDateTimeString(),
                 ];
             })
             ->values();

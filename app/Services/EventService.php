@@ -24,6 +24,11 @@ class EventService
 
     public function create(User $user, array $data): Event
     {
+        if (!isset($data['reminder_time']) && isset($data['date']) && isset($data['start_time'])) {
+            $startTime = $this->normalizeTime($data['start_time']);
+            $data['reminder_time'] = $data['date'] . ' ' . $startTime;
+        }
+
         $event = new Event(Arr::except($data, ['_token']));
         $event->user_id = $user->id;
         $event->save();
@@ -66,6 +71,12 @@ class EventService
 
     public function update(Event $event, array $data): Event
     {
+        if (!isset($data['reminder_time']) && (isset($data['date']) || isset($data['start_time']))) {
+            $date = $data['date'] ?? $event->date->format('Y-m-d');
+            $startTime = isset($data['start_time']) ? $this->normalizeTime($data['start_time']) : $event->start_time->format('H:i:s');
+            $data['reminder_time'] = $date . ' ' . $startTime;
+        }
+
         $event->fill($data);
         $event->save();
 

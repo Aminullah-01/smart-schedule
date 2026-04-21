@@ -26,6 +26,9 @@ type DashboardProps = PageProps<{
         isRecurring: boolean;
         recurrenceType: 'daily' | 'weekly' | 'monthly' | null;
         time: string;
+        reminderTime: string | null;
+        reminderQueuedAt: string | null;
+        reminderSentAt: string | null;
     }>;
     recentNotifications: Array<{
         id: number;
@@ -166,19 +169,42 @@ export default function Dashboard({ stats, timeline, recentNotifications }: Dash
         }
     };
 
-    const handleSendReminderNow = async (eventId: number) => {
-        setErrorMessage('');
-        setSuccessMessage('');
-
-        try {
-            await axios.post(`/api/events/${eventId}/send-reminder`);
-            setSuccessMessage('Reminder sent successfully.');
-            refreshDashboard();
-        } catch (error: any) {
-            setErrorMessage(
-                error?.response?.data?.message ?? 'Unable to send reminder right now.',
-            );
+    /**
+     * Derive a reminder status label + style from the event's DB fields.
+     * - reminderSentAt set   → Sent
+     * - reminderQueuedAt set → Scheduled
+     * - reminderTime set     → Auto-enabled (waiting for scheduler)
+     * - otherwise            → no reminder
+     */
+    const getReminderStatus = (
+        event: DashboardProps['timeline'][number],
+    ): { label: string; className: string; dot: string } => {
+        if (event.reminderSentAt) {
+            return {
+                label: '✓ Sent',
+                className: 'bg-emerald-50 text-emerald-700 border border-emerald-200',
+                dot: 'bg-emerald-500',
+            };
         }
+        if (event.reminderQueuedAt) {
+            return {
+                label: '⏳ Scheduled',
+                className: 'bg-sky-50 text-sky-700 border border-sky-200',
+                dot: 'bg-sky-500',
+            };
+        }
+        if (event.reminderTime) {
+            return {
+                label: '🔔 Auto-enabled',
+                className: 'bg-teal-50 text-teal-700 border border-teal-200',
+                dot: 'bg-teal-500',
+            };
+        }
+        return {
+            label: 'No reminder',
+            className: 'bg-slate-100 text-slate-500 border border-slate-200',
+            dot: 'bg-slate-400',
+        };
     };
 
     const openRuleModal = async () => {
@@ -378,17 +404,24 @@ export default function Dashboard({ stats, timeline, recentNotifications }: Dash
                                             <span className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">
                                                 {item.time}
                                             </span>
+                                            {/* Reminder Status Badge */}
+                                            {(() => {
+                                                const status = getReminderStatus(item);
+                                                return (
+                                                    <span
+                                                        title="Automatic reminder status"
+                                                        className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold ${status.className}`}
+                                                    >
+                                                        <span className={`h-1.5 w-1.5 rounded-full ${status.dot}`} />
+                                                        {status.label}
+                                                    </span>
+                                                );
+                                            })()}
                                             <button
                                                 onClick={() => openEditModal(item)}
                                                 className="rounded-md border border-slate-300 px-2 py-1 text-xs font-medium text-slate-700 transition hover:bg-white"
                                             >
                                                 Edit
-                                            </button>
-                                            <button
-                                                onClick={() => handleSendReminderNow(item.id)}
-                                                className="rounded-md border border-teal-200 px-2 py-1 text-xs font-medium text-teal-700 transition hover:bg-teal-50"
-                                            >
-                                                Send Reminder
                                             </button>
                                             <button
                                                 onClick={() => handleDelete(item.id)}

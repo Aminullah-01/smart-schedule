@@ -30,11 +30,17 @@ class SmsService
             throw new \RuntimeException('Termii API key is missing. Set TERMII_API_KEY in environment.');
         }
 
+        // Format phone number to international format, removing '+' or converting local '0' prefix
+        $formattedPhone = preg_replace('/[^0-9]/', '', $phone);
+        if (strlen($formattedPhone) === 11 && str_starts_with($formattedPhone, '0')) {
+            $formattedPhone = '234' . substr($formattedPhone, 1);
+        }
+
         $response = Http::timeout(15)
             ->acceptJson()
             ->post("{$baseUrl}/api/sms/send", [
                 'api_key' => $apiKey,
-                'to' => $phone,
+                'to' => $formattedPhone,
                 'from' => $senderId,
                 'sms' => $message,
                 'type' => $type,
@@ -42,7 +48,18 @@ class SmsService
             ]);
 
         if (! $response->successful()) {
-            throw new \RuntimeException('Termii SMS request failed: '.$response->status().' '.$response->body());
+            $body = $response->json();
+            $providerMessage = is_array($body)
+                ? (string) ($body['message'] ?? $response->body())
+                : $response->body();
+
+            if (str_contains($providerMessage, 'ApplicationSenderId not found')) {
+                throw new \RuntimeException(
+                    'Termii sender ID is not registered for this account. Update TERMII_SENDER_ID to an approved Sender ID from your Termii dashboard.'
+                );
+            }
+
+            throw new \RuntimeException('Termii SMS request failed: '.$response->status().' '.$providerMessage);
         }
 
         Log::info('SMS sent via Termii provider.', [

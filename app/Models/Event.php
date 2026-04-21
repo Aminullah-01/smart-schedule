@@ -22,6 +22,7 @@ class Event extends Model
         'end_time',
         'is_recurring',
         'recurrence_type',
+        'reminder_time',
         'reminder_queued_at',
         'reminder_sent_at',
     ];
@@ -35,6 +36,7 @@ class Event extends Model
             'is_recurring' => 'boolean',
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
+            'reminder_time' => 'datetime',
             'reminder_queued_at' => 'datetime',
             'reminder_sent_at' => 'datetime',
         ];

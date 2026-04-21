@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\NotificationPreference;
+use App\Services\NotificationService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -47,6 +48,39 @@ class NotificationPreferenceController extends Controller
         return response()->json([
             'message' => 'Reminder rule saved successfully.',
             'data' => $preference,
+        ]);
+    }
+
+    public function testSms(Request $request, NotificationService $notificationService): JsonResponse
+    {
+        $user = $request->user();
+
+        $preference = NotificationPreference::query()->firstOrCreate(
+            ['user_id' => $user->id],
+            [
+                'email_enabled' => true,
+                'sms_enabled' => false,
+                'browser_enabled' => true,
+                'in_app_enabled' => true,
+            ]
+        );
+
+        if (! $preference->sms_enabled) {
+            return response()->json([
+                'message' => 'Enable SMS reminders in your reminder rule first.',
+            ], 422);
+        }
+
+        if (empty($user->phone)) {
+            return response()->json([
+                'message' => 'Phone number is missing on your profile.',
+            ], 422);
+        }
+
+        $notificationService->send($user, null, ['sms']);
+
+        return response()->json([
+            'message' => 'Test SMS sent successfully.',
         ]);
     }
 }

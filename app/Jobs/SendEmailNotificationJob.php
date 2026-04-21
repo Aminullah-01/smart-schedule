@@ -19,6 +19,8 @@ class SendEmailNotificationJob implements ShouldQueue
 
     public int $tries = 3;
 
+    public int $backoff = 30;
+
     public function __construct(public int $notificationId)
     {
     }
@@ -39,9 +41,15 @@ class SendEmailNotificationJob implements ShouldQueue
             ->send(new EventReminderMail($notification->event, $notification->message));
 
         $notification->forceFill([
-            'status' => 'sent',
+            'status'  => 'sent',
             'sent_at' => now(),
         ])->save();
+
+        Log::channel('reminders')->info('Email reminder sent.', [
+            'notification_id' => $notification->id,
+            'user_email'      => $notification->user->email,
+            'event_id'        => $notification->event_id,
+        ]);
     }
 
     public function failed(Throwable $exception): void
@@ -49,13 +57,13 @@ class SendEmailNotificationJob implements ShouldQueue
         Notification::query()
             ->whereKey($this->notificationId)
             ->update([
-                'status' => 'failed',
+                'status'  => 'failed',
                 'sent_at' => null,
             ]);
 
-        Log::error('Email notification job failed.', [
+        Log::channel('reminders')->error('Email notification job failed.', [
             'notification_id' => $this->notificationId,
-            'error' => $exception->getMessage(),
+            'error'           => $exception->getMessage(),
         ]);
     }
 }

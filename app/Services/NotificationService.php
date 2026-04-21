@@ -138,12 +138,12 @@ class NotificationService
 
     public function sendEmail(Notification $notification): void
     {
-        SendEmailNotificationJob::dispatchSync($notification->id);
+        SendEmailNotificationJob::dispatch($notification->id);
     }
 
     public function sendSMS(Notification $notification): void
     {
-        SendSMSNotificationJob::dispatchSync($notification->id);
+        SendSMSNotificationJob::dispatch($notification->id);
     }
 
     public function sendBrowserPush(User $user, ?Event $event, string $message): void

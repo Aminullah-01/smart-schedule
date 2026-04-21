@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/notifications', [NotificationController::class, 'index']);
     Route::get('/notification-preferences', [NotificationPreferenceController::class, 'show']);
     Route::put('/notification-preferences', [NotificationPreferenceController::class, 'update']);
+    Route::post('/notification-preferences/test-sms', [NotificationPreferenceController::class, 'testSms']);
 });
 
 
