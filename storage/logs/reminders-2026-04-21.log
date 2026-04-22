@@ -1,0 +1,177 @@
+[2026-04-21 21:19:06] local.INFO: Reminder job queued. {"event_id":13,"event_title":"cos 203","user_id":2,"reminder_time":"2026-04-12 08:00:00","queued_at":"2026-04-21 21:19:04"} 
+[2026-04-21 21:19:06] local.INFO: Reminder job queued. {"event_id":18,"event_title":"build with AI","user_id":3,"reminder_time":"2026-04-19 00:54:00","queued_at":"2026-04-21 21:19:04"} 
+[2026-04-21 21:19:06] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 21:19:04","jobs_dispatched":2,"skipped":0} 
+[2026-04-21 21:19:31] local.INFO: Email reminder sent. {"notification_id":76,"user_email":"aminugamboabubakar33@gmail.com","event_id":20} 
+[2026-04-21 22:11:07] local.WARNING: Reset stale reminder locks — will retry these events. {"count":2,"threshold":"2026-04-21 22:01:06"} 
+[2026-04-21 22:11:08] local.INFO: Reminder job queued. {"event_id":13,"event_title":"cos 203","user_id":2,"reminder_time":"2026-04-12 08:00:00","queued_at":"2026-04-21 22:11:06"} 
+[2026-04-21 22:11:08] local.INFO: Reminder job queued. {"event_id":18,"event_title":"build with AI","user_id":3,"reminder_time":"2026-04-19 00:54:00","queued_at":"2026-04-21 22:11:06"} 
+[2026-04-21 22:11:08] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:11:06","jobs_dispatched":2,"skipped":0} 
+[2026-04-21 22:12:29] local.INFO: Email reminder sent. {"notification_id":80,"user_email":"aminugamboabubakar33@gmail.com","event_id":20} 
+[2026-04-21 22:12:32] local.INFO: Event reminder sent successfully. {"event_id":13,"event_title":"cos 203","user_id":2,"user_email":"aminugamboabubakar33@gmail.com","sent_at":"2026-04-21 22:12:32"} 
+[2026-04-21 22:12:33] local.INFO: Event reminder sent successfully. {"event_id":18,"event_title":"build with AI","user_id":3,"user_email":"aminugamboabubakar@gmail.com","sent_at":"2026-04-21 22:12:33"} 
+[2026-04-21 22:12:37] local.INFO: Email reminder sent. {"notification_id":84,"user_email":"aminugamboabubakar33@gmail.com","event_id":20} 
+[2026-04-21 22:12:42] local.INFO: Email reminder sent. {"notification_id":88,"user_email":"aminugamboabubakar33@gmail.com","event_id":20} 
+[2026-04-21 22:12:46] local.INFO: Email reminder sent. {"notification_id":91,"user_email":"aminugamboabubakar33@gmail.com","event_id":20} 
+[2026-04-21 22:12:51] local.INFO: Email reminder sent. {"notification_id":93,"user_email":"aminugamboabubakar33@gmail.com","event_id":20} 
+[2026-04-21 22:12:53] local.INFO: Reminder job skipped — already sent (manual or duplicate). {"event_id":13,"reminder_sent_at":"2026-04-21 22:12:32"} 
+[2026-04-21 22:12:53] local.INFO: Reminder job skipped — already sent (manual or duplicate). {"event_id":18,"reminder_sent_at":"2026-04-21 22:12:33"} 
+[2026-04-21 22:12:58] local.INFO: Email reminder sent. {"notification_id":95,"user_email":"aminugamboabubakar33@gmail.com","event_id":13} 
+[2026-04-21 22:13:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:13:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:13:02] local.INFO: Email reminder sent. {"notification_id":98,"user_email":"aminugamboabubakar@gmail.com","event_id":18} 
+[2026-04-21 22:13:05] local.ERROR: SMS notification job failed. {"notification_id":77,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:13:08] local.ERROR: SMS notification job failed. {"notification_id":81,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:13:42] local.ERROR: SMS notification job failed. {"notification_id":85,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:13:47] local.ERROR: SMS notification job failed. {"notification_id":89,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:13:52] local.ERROR: SMS notification job failed. {"notification_id":92,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:13:57] local.ERROR: SMS notification job failed. {"notification_id":94,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:14:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:14:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:14:05] local.ERROR: SMS notification job failed. {"notification_id":96,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:14:10] local.ERROR: SMS notification job failed. {"notification_id":99,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:15:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:15:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:16:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:16:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:17:02] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:17:02","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:18:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:18:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:19:02] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:19:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:20:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:20:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:21:03] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:21:03","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:22:02] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:22:02","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:23:03] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:23:03","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:24:17] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:24:15","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:25:17] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:25:16","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:26:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:26:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:27:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:27:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:28:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:28:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:29:02] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:29:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:30:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:30:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:31:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:31:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:32:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:32:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:33:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:33:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:34:00] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:34:00","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:35:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:35:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:36:02] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:36:02","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:37:00] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:37:00","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:38:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:38:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:39:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:39:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:40:02] local.INFO: Reminder job queued. {"event_id":3,"event_title":"Build with AI","user_id":2,"reminder_time":"2026-04-11 21:00:20","queued_at":"2026-04-21 22:40:01"} 
+[2026-04-21 22:40:02] local.INFO: Reminder job queued. {"event_id":4,"event_title":"Build with AI","user_id":2,"reminder_time":"2026-04-11 21:00:21","queued_at":"2026-04-21 22:40:01"} 
+[2026-04-21 22:40:03] local.INFO: Reminder job queued. {"event_id":5,"event_title":"Build with AI","user_id":2,"reminder_time":"2026-04-11 21:00:22","queued_at":"2026-04-21 22:40:01"} 
+[2026-04-21 22:40:03] local.INFO: Reminder job queued. {"event_id":6,"event_title":"Build with AI","user_id":2,"reminder_time":"2026-04-11 21:00:22","queued_at":"2026-04-21 22:40:01"} 
+[2026-04-21 22:40:03] local.INFO: Reminder job queued. {"event_id":7,"event_title":"Build with AI","user_id":2,"reminder_time":"2026-04-11 21:00:22","queued_at":"2026-04-21 22:40:01"} 
+[2026-04-21 22:40:04] local.INFO: Reminder job queued. {"event_id":8,"event_title":"Build with AI","user_id":2,"reminder_time":"2026-04-11 21:00:22","queued_at":"2026-04-21 22:40:01"} 
+[2026-04-21 22:40:04] local.INFO: Reminder job queued. {"event_id":9,"event_title":"Build with AI","user_id":2,"reminder_time":"2026-04-11 21:00:22","queued_at":"2026-04-21 22:40:01"} 
+[2026-04-21 22:40:05] local.INFO: Reminder job queued. {"event_id":10,"event_title":"Build with AI","user_id":2,"reminder_time":"2026-04-11 21:00:23","queued_at":"2026-04-21 22:40:01"} 
+[2026-04-21 22:40:06] local.INFO: Reminder job queued. {"event_id":11,"event_title":"Build with AI","user_id":2,"reminder_time":"2026-04-11 21:00:23","queued_at":"2026-04-21 22:40:01"} 
+[2026-04-21 22:40:07] local.INFO: Reminder job queued. {"event_id":21,"event_title":"test","user_id":2,"reminder_time":"2026-04-21 21:46:17","queued_at":"2026-04-21 22:40:01"} 
+[2026-04-21 22:40:07] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:40:01","jobs_dispatched":10,"skipped":0} 
+[2026-04-21 22:40:17] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:40:17","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:41:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:41:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:41:29] local.ERROR: SMS notification job failed. {"notification_id":101,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:41:34] local.INFO: Event reminder sent successfully. {"event_id":3,"event_title":"Build with AI","user_id":2,"user_email":"aminugamboabubakar33@gmail.com","sent_at":"2026-04-21 22:41:34"} 
+[2026-04-21 22:42:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:42:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:43:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:43:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:43:48] local.INFO: Event reminder sent successfully. {"event_id":4,"event_title":"Build with AI","user_id":2,"user_email":"aminugamboabubakar33@gmail.com","sent_at":"2026-04-21 22:43:48"} 
+[2026-04-21 22:43:49] local.INFO: Event reminder sent successfully. {"event_id":5,"event_title":"Build with AI","user_id":2,"user_email":"aminugamboabubakar33@gmail.com","sent_at":"2026-04-21 22:43:49"} 
+[2026-04-21 22:43:50] local.INFO: Event reminder sent successfully. {"event_id":6,"event_title":"Build with AI","user_id":2,"user_email":"aminugamboabubakar33@gmail.com","sent_at":"2026-04-21 22:43:50"} 
+[2026-04-21 22:43:52] local.INFO: Event reminder sent successfully. {"event_id":7,"event_title":"Build with AI","user_id":2,"user_email":"aminugamboabubakar33@gmail.com","sent_at":"2026-04-21 22:43:52"} 
+[2026-04-21 22:43:53] local.INFO: Event reminder sent successfully. {"event_id":8,"event_title":"Build with AI","user_id":2,"user_email":"aminugamboabubakar33@gmail.com","sent_at":"2026-04-21 22:43:53"} 
+[2026-04-21 22:43:54] local.INFO: Event reminder sent successfully. {"event_id":9,"event_title":"Build with AI","user_id":2,"user_email":"aminugamboabubakar33@gmail.com","sent_at":"2026-04-21 22:43:54"} 
+[2026-04-21 22:43:55] local.INFO: Event reminder sent successfully. {"event_id":10,"event_title":"Build with AI","user_id":2,"user_email":"aminugamboabubakar33@gmail.com","sent_at":"2026-04-21 22:43:55"} 
+[2026-04-21 22:43:56] local.INFO: Event reminder sent successfully. {"event_id":11,"event_title":"Build with AI","user_id":2,"user_email":"aminugamboabubakar33@gmail.com","sent_at":"2026-04-21 22:43:56"} 
+[2026-04-21 22:43:57] local.INFO: Event reminder sent successfully. {"event_id":21,"event_title":"test","user_id":2,"user_email":"aminugamboabubakar33@gmail.com","sent_at":"2026-04-21 22:43:57"} 
+[2026-04-21 22:43:59] local.ERROR: SMS notification job failed. {"notification_id":102,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:44:02] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:44:02","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:44:08] local.INFO: Email reminder sent. {"notification_id":103,"user_email":"aminugamboabubakar33@gmail.com","event_id":3} 
+[2026-04-21 22:44:12] local.INFO: Email reminder sent. {"notification_id":105,"user_email":"aminugamboabubakar33@gmail.com","event_id":4} 
+[2026-04-21 22:44:16] local.INFO: Email reminder sent. {"notification_id":107,"user_email":"aminugamboabubakar33@gmail.com","event_id":5} 
+[2026-04-21 22:44:21] local.INFO: Email reminder sent. {"notification_id":109,"user_email":"aminugamboabubakar33@gmail.com","event_id":6} 
+[2026-04-21 22:44:25] local.INFO: Email reminder sent. {"notification_id":111,"user_email":"aminugamboabubakar33@gmail.com","event_id":7} 
+[2026-04-21 22:44:29] local.INFO: Email reminder sent. {"notification_id":113,"user_email":"aminugamboabubakar33@gmail.com","event_id":8} 
+[2026-04-21 22:44:33] local.INFO: Email reminder sent. {"notification_id":115,"user_email":"aminugamboabubakar33@gmail.com","event_id":9} 
+[2026-04-21 22:44:37] local.INFO: Email reminder sent. {"notification_id":117,"user_email":"aminugamboabubakar33@gmail.com","event_id":10} 
+[2026-04-21 22:44:41] local.INFO: Email reminder sent. {"notification_id":119,"user_email":"aminugamboabubakar33@gmail.com","event_id":11} 
+[2026-04-21 22:44:46] local.INFO: Email reminder sent. {"notification_id":121,"user_email":"aminugamboabubakar33@gmail.com","event_id":21} 
+[2026-04-21 22:45:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:45:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:45:23] local.ERROR: SMS notification job failed. {"notification_id":104,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:45:25] local.ERROR: SMS notification job failed. {"notification_id":106,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:45:26] local.ERROR: SMS notification job failed. {"notification_id":108,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:45:28] local.ERROR: SMS notification job failed. {"notification_id":110,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:45:30] local.ERROR: SMS notification job failed. {"notification_id":112,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:45:38] local.ERROR: SMS notification job failed. {"notification_id":114,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:45:40] local.ERROR: SMS notification job failed. {"notification_id":116,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:45:45] local.ERROR: SMS notification job failed. {"notification_id":118,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:45:50] local.ERROR: SMS notification job failed. {"notification_id":120,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:45:52] local.ERROR: SMS notification job failed. {"notification_id":122,"error":"Termii SMS request failed: 400 "} 
+[2026-04-21 22:46:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:46:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:47:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:47:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:48:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:48:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:49:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:49:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:50:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:50:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:51:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:51:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:52:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:52:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:53:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:53:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:54:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:54:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:55:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:55:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:56:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:56:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:57:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:57:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:58:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:58:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 22:59:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 22:59:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:00:03] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:00:03","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:01:03] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:01:03","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:02:02] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:02:02","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:03:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:03:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:04:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:04:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:05:02] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:05:02","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:06:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:06:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:07:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:07:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:08:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:08:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:09:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:09:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:10:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:10:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:11:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:11:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:12:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:12:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:13:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:13:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:14:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:14:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:15:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:15:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:16:00] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:16:00","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:17:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:17:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:18:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:18:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:19:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:19:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:20:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:20:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:21:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:21:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:22:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:22:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:23:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:23:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:24:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:24:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:25:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:25:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:26:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:26:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:27:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:27:00","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:28:03] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:28:03","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:29:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:29:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:30:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:30:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:31:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:31:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:32:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:32:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:33:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:33:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:34:03] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:34:02","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:35:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:35:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:36:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:36:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:37:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:37:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:38:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:38:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:39:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:39:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:40:00] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:40:00","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:41:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:41:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:42:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:42:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:43:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:43:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:44:03] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:44:03","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:45:02] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:45:02","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:46:02] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:46:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:47:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:47:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:48:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:48:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:49:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:49:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:50:00] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:50:00","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:51:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:51:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:52:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:52:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:53:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:53:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:54:02] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:54:02","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:55:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:55:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:56:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:56:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:57:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:57:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:58:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:58:01","jobs_dispatched":0,"skipped":0} 
+[2026-04-21 23:59:01] local.INFO: Reminder scheduler tick complete. {"checked_at":"2026-04-21 23:59:00","jobs_dispatched":0,"skipped":0} 
