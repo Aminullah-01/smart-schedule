@@ -20,15 +20,8 @@ export default function Authenticated({
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 justify-between">
                         <div className="flex items-center gap-6">
-                            <Link href="/" className="flex items-center gap-3">
-                                <div className="grid h-9 w-9 place-items-center rounded-xl border border-teal-200 bg-teal-50">
-                                    <ApplicationLogo className="h-5 w-5 fill-current text-teal-700" />
-                                </div>
-                                <div className="hidden sm:block">
-                                    <p className="text-xs font-semibold tracking-[0.18em] text-slate-500">
-                                        SMART SCHEDULER
-                                    </p>
-                                </div>
+                            <Link href="/" className="flex items-center gap-3 transition-opacity hover:opacity-90">
+                                <ApplicationLogo className="h-9 w-auto" />
                             </Link>
 
                             <div className="hidden space-x-2 sm:flex">

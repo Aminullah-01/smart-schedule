@@ -11,15 +11,9 @@ export default function Welcome({ auth }: PageProps) {
                 <div className="pointer-events-none absolute right-0 top-0 h-72 w-72 rounded-full bg-blue-200/55 blur-3xl" />
 
                 <header className="relative mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-7">
-                    <div className="fade-up flex items-center gap-3">
-                        <div className="grid h-11 w-11 place-items-center rounded-2xl border border-teal-200 bg-teal-50 text-sm font-bold text-teal-700">
-                            SS
-                        </div>
-                        <div>
-                            <p className="text-xs font-semibold tracking-[0.22em] text-slate-500">SMART SCHEDULER</p>
-                            <p className="text-sm text-slate-700">Plan with less noise, act with precision.</p>
-                        </div>
-                    </div>
+                    <Link href="/" className="fade-up flex items-center transition-opacity hover:opacity-90">
+                        <img src="/images/logo.png" className="h-11 w-auto" alt="SmartSchedule Logo" />
+                    </Link>
 
                     <nav className="fade-up flex items-center gap-2">
                         {auth.user ? (

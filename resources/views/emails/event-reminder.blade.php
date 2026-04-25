@@ -6,7 +6,11 @@
     <title>Event Reminder</title>
 </head>
 <body>
-    <h2>Event Reminder</h2>
+    <div style="text-align: center; margin-bottom: 20px;">
+        <img src="{{ config('app.url') }}/images/logo.png" alt="SmartSchedule Logo" style="height: 60px; width: auto;">
+    </div>
+    
+    <h2 style="text-align: center; color: #334155;">Event Reminder</h2>
 
     @if($event)
         <p><strong>Event:</strong> {{ $event->title }}</p>
